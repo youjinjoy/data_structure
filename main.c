@@ -12,5 +12,4 @@ int main(){
     InsertNode(New_Tree, InitNode(1));
     DeleteNode(New_Tree, SearchNode(New_Tree->root, 1));
     InorderTreeWalk(New_Tree->root);
-
 }

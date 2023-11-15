@@ -25,7 +25,7 @@ void InorderTreeWalk(Node *node);
 Node *SearchNode(Node *root, int key);
 
 /* 최소 원소 반환 */
-Node *FindMinmum(Node *node);
+Node *FindMinimum(Node *node);
 
 /* 최대 원소 반환*/
 Node *FindMaximum(Node *node);

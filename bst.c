@@ -10,6 +10,7 @@ Node *InitNode(int key){
     node->left = NULL;
     node->right = NULL;
 }
+
 /* 트리 생성 */
 Bst *InitTree(){
     Bst *tree = (Bst *)malloc(sizeof(Bst));
@@ -26,22 +27,23 @@ void InorderTreeWalk(Node *node)
         printf("%d ", node->key);
         InorderTreeWalk(node->right);
     }
+    return;
 }
 
 /* 노드 검색 */
 Node *SearchNode(Node *root, int key)
 {
-    Node *node = root;
-    if (node == NULL || key == node->key)
-        return node;
-    if (key < node->key)
-        return SearchNode(node->left, key);
+    Node *current = root;
+    if (current == NULL || key == current->key)
+        return current;
+    if (key < current->key)
+        return SearchNode(current->left, key);
     else
-        return SearchNode(node->right, key);
+        return SearchNode(current->right, key);
 }
 
 /* 최소 원소 반환 */
-Node *FindMinmum(Node *node)
+Node *FindMinimum(Node *node)
 {
     while (node->left != NULL)
         node = node->left;
@@ -60,7 +62,7 @@ Node *FindMaximum(Node *node)
 Node *FindSuccessor(Node *node)
 {
     if (node-> right != NULL)
-        return FindMinmum(node->right);
+        return FindMinimum(node->right);
     Node *y = node->parent;
     while (y != NULL && node == y->right)
     {
@@ -98,6 +100,7 @@ void InsertNode(Bst *tree, Node *node)
             x = x->right;
     }
     node->parent = y;
+    printf("%d\n", node->parent->key);
     if (y == NULL)
         tree->root = node;
     else if (node->key < y->key)
@@ -128,7 +131,7 @@ void DeleteNode(Bst *tree, Node *node)
     else if (node->right == NULL)
         TransplantNode(tree, node, node->left);
     else
-        y = FindMinmum(node->right);
+        y = FindMinimum(node->right);
         if (y->parent != node)
             TransplantNode(tree, y, y->right);
             y->right = node->right;
