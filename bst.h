@@ -44,3 +44,7 @@ void TransplantNode(Bst *tree, Node *old_node, Node *new_node);
 
 /* 삭제 */
 void DeleteNode(Bst *tree, Node *node);
+
+void DeleteTree(Bst *tree);
+
+void postOrderDelete(Node* node);

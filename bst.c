@@ -30,6 +30,21 @@ void InorderTreeWalk(Node *node)
     return;
 }
 
+void DeleteTree(Bst *tree){
+
+    postOrderDelete(tree->root);
+
+    free(tree);
+}
+
+void postOrderDelete(Node* node){
+
+    if(node==NULL) return;
+    postOrderDelete(node->left);
+    postOrderDelete(node->right);
+    free(node);
+}
+
 /* 노드 검색 */
 Node *SearchNode(Node *root, int key)
 {
