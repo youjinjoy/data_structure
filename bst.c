@@ -100,7 +100,7 @@ void InsertNode(Bst *tree, Node *node)
             x = x->right;
     }
     node->parent = y;
-    printf("%d\n", node->parent->key);
+    // printf("%d\n", node->parent->key);
     if (y == NULL)
         tree->root = node;
     else if (node->key < y->key)
