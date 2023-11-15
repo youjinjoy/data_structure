@@ -24,7 +24,7 @@ void InorderTreeWalk(Node *node)
     if (node != NULL)
     {
         InorderTreeWalk(node->left);
-        printf("%d ", node->key);
+        printf("%d\n", node->key);
         InorderTreeWalk(node->right);
     }
     return;
@@ -130,13 +130,16 @@ void DeleteNode(Bst *tree, Node *node)
         TransplantNode(tree, node, node->right);
     else if (node->right == NULL)
         TransplantNode(tree, node, node->left);
-    else
+    else{
         y = FindMinimum(node->right);
-        if (y->parent != node)
+        if (y->parent != node){
             TransplantNode(tree, y, y->right);
             y->right = node->right;
             y->right->parent = y;
+        }
         TransplantNode(tree, node, y);
         y->left = node->left;
         y->left->parent = y;
+    }
+    free(node);
 }
